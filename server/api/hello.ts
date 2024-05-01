@@ -1,7 +1,10 @@
+import {DB} from '../utility'
+
 export default defineEventHandler
-((event
+(async (event
 ) => {
-  return {
-    hello : 'world'
-  }
+    const resp = await DB.from('personalinfo').select('*')
+    return {
+        hello: resp.data
+    }
 })
